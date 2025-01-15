@@ -37,7 +37,9 @@ function! islime2#iTermSendNext(command)
 endfunction
 
 function! islime2#shellesc(arg) abort
-  return '"'.escape(a:arg, '"').'"'
+  " system() call will 'eval' var / func call, use single quote instead
+  "return '"'.escape(a:arg, '"').'"'    
+  return "'".escape(a:arg, "'")."'"
 endfunction
 
 function! islime2#iTermSendOperator(type, ...) abort
